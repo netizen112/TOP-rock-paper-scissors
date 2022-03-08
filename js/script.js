@@ -17,7 +17,7 @@ function computerPlay(){
 }
 
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
+    //playerSelection = playerSelection.toLowerCase();
     let outcome;
 
     switch (playerSelection) {
@@ -35,26 +35,48 @@ function playRound(playerSelection, computerSelection){
             break;
     }
 
-    /*switch (outcome) {
+    const disp = document.querySelector('#resultDisplay');
+    function displayResult(string) {
+        disp.textContent = string;
+    }
+
+    switch (outcome) {
         case 'Win':
-            return `You Win! ${playerSelection} beats ${computerSelection}`;
+            displayResult(`You Win! ${playerSelection} beats ${computerSelection}`);
+            disp.style.backgroundColor = 'green';
+            break;
         case 'Lose':
-            return `You Lose! ${computerSelection} beats ${playerSelection}`;
+            displayResult(`You Lose! ${computerSelection} beats ${playerSelection}`);
+            disp.style.backgroundColor = 'red';
+            break;
         case 'Tie':
-            return `It's a Tie - Player and Computer both chose ${computerSelection}`;
+            displayResult(`It's a Tie - Player and Computer both chose ${computerSelection}`);
+            disp.style.backgroundColor = 'beige';
+            break;
         default:
-            return 'Invalid Player Input';
-
-    }*/
-
-    return outcome;
+            displayResult('Invalid Player Input');
+            break;
+    }
 }
+
+function clickHandler(e) {
+    playRound(e.srcElement.id, computerPlay());
+}
+
+const btnRock = document.querySelector('#rock');
+btnRock.addEventListener('click', clickHandler);
+
+const btnPaper = document.querySelector('#paper');
+btnPaper.addEventListener('click', clickHandler);
+
+const btnScissors = document.querySelector('#scissors');
+btnScissors.addEventListener('click', clickHandler);
 
 /*const playerSelection = "rock";
 const computerSelection = computerPlay();
 console.log(playRound(playerSelection, computerSelection));*/
 
-function game(){
+/*function game(){
     let playerScore = 0
     let computerScore = 0
 
@@ -101,4 +123,4 @@ function game(){
             console.error();
             break;
     }
-}
+}*/
