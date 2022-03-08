@@ -1,9 +1,11 @@
-function randNum(num){
+let gameOver;
+
+function randNum(num) {
     //Generates a random number between 1 and num
     return Math.floor((Math.random() * num) + 1)
 }
 
-function computerPlay(){
+function computerPlay() {
     //Uses the randNum function and returns either 'Rock', 'Paper' or 'Scissors'
     switch (randNum(3)) {
         case 1:
@@ -16,7 +18,7 @@ function computerPlay(){
     }
 }
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection) {
     //playerSelection = playerSelection.toLowerCase();
     let outcome;
 
@@ -31,8 +33,8 @@ function playRound(playerSelection, computerSelection){
         case 'scissors':
             outcome = (computerSelection == 'Rock') ? 'Lose' : (computerSelection == 'Paper') ? 'Win' : 'Tie';
             break;
-        default: 
-            outcome ='Invalid Input';
+        default:
+            outcome = 'Invalid Input';
             break;
     }
 
@@ -59,70 +61,83 @@ function playRound(playerSelection, computerSelection){
             displayResult('Invalid Player Input');
             break;
     }
+
+    return outcome;
 }
 
-function clickHandler(e) {
-    playRound(e.srcElement.id, computerPlay());
-}
 
-const btnRock = document.querySelector('#rock');
-btnRock.addEventListener('click', clickHandler);
 
-const btnPaper = document.querySelector('#paper');
-btnPaper.addEventListener('click', clickHandler);
+function game() {
+    startBtn.textContent = 'Restart';
+    let roundNumber, playerScore, computerScore, roundOver, outcome;
 
-const btnScissors = document.querySelector('#scissors');
-btnScissors.addEventListener('click', clickHandler);
 
-/*const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));*/
+    const titleBar = document.querySelector('#titleBar');
+    const btnRock = document.querySelector('#rock');
+    const btnPaper = document.querySelector('#paper');
+    const btnScissors = document.querySelector('#scissors');
+    const playerScoreCounter = document.querySelector('#playerScoreCounter');
+    const computerScoreCounter = document.querySelector('#computerScoreCounter');
+    const resultDisplay = document.querySelector('#resultDisplay');
 
-/*function game(){
-    let playerScore = 0
-    let computerScore = 0
+    function clickHandler(e) {
+        outcome = playRound(e.srcElement.id, computerPlay());
+        progressRound();
+    }
 
-    for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i+1}:`);
+    function initialise() {
+        roundNumber = 1;
+        playerScore = 0;
+        computerScore = 0;
+        roundOver = false;
 
-        let playerSelection = prompt(`Enter Rock, Paper or Scissors!`);
-        let computerSelection = computerPlay();
+        btnRock.addEventListener('click', clickHandler);
+        btnPaper.addEventListener('click', clickHandler);
+        btnScissors.addEventListener('click', clickHandler);
 
-        let outcome = playRound(playerSelection, computerSelection);
+        titleBar.textContent = `Playing Round ${roundNumber}`;
+        playerScoreCounter.textContent = `${playerScore}`;
+        computerScoreCounter.textContent = `${computerScore}`;
+        resultDisplay.textContent = '';
+        resultDisplay.style.backgroundColor = 'blanchedalmond';
+    }
+
+    initialise();
+
+    function progressRound() {
 
         switch (outcome) {
             case 'Win':
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
                 playerScore++;
+                playerScoreCounter.textContent = playerScore;
                 break;
             case 'Lose':
-                console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 computerScore++;
+                computerScoreCounter.textContent = computerScore;
                 break;
             case 'Tie':
-                console.log(`It's a Tie - Player and Computer both chose ${computerSelection}`);
                 break;
-            case 'Invalid Input':
-                console.error('Invalid input');
-                i--;
-                break;
+            default: break;
         }
 
-        console.log(`Player Score: ${playerScore}. Computer Score: ${computerScore}`);
-    }
+        if (playerScore == 5 || computerScore == 5) {
+            if (playerScore == 5) {
+                titleBar.textContent = `You Win!`;
+            } else {
+                titleBar.textContent = `You lose :(`
+            }
 
-    switch(true) {
-        case (playerScore == computerScore):
-            console.log("Game over! It's a tie.")
-            break;
-        case (playerScore > computerScore):
-            console.log("Game over - Player Wins!");
-            break;
-        case (computerScore > playerScore):
-            console.log("Game over - Computer Wins!");
-            break;
-        default:
-            console.error();
-            break;
+            btnRock.removeEventListener('click', clickHandler)
+            btnPaper.removeEventListener('click', clickHandler);
+            btnScissors.removeEventListener('click', clickHandler);
+
+            return;
+        }
+
+        roundNumber++;
+        titleBar.textContent = `Playing Round ${roundNumber}`;
     }
-}*/
+}
+
+const startBtn = document.querySelector('#startButton');
+startBtn.addEventListener('click', game);

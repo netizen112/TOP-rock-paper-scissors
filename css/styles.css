@@ -22,10 +22,16 @@ body {
     gap: 8px;
 }
 
+#titleBar {
+    text-align: center;
+    font-size: xx-large;
+    border: 8px solid rgb(211, 16, 97);
+}
+
 #scoreDisplay {
     display: flex;
     width: 500px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     min-height: 160px;
     justify-content: space-between;
     gap: 8px;
@@ -36,11 +42,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     flex: 1;
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
 }
 
 #playerScoreLabel {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     text-align: center;
     font-weight: bold;
 }
@@ -49,7 +55,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     height: 60%;
     font-size: 80px;
 }
@@ -59,11 +65,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     flex: 1;
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
 }
 
 #computerScoreLabel {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     text-align: center;
     font-weight: bold;
 }
@@ -72,16 +78,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     height: 60%;
     font-size: 80px;
 }
 
 #resultDisplay {
     min-height: 32px;
-    border: 4px dashed darkgoldenrod;
-    /*margin-bottom: 8px;*/
-    background-color: azure;
+    border: 4px dotted darkgoldenrod;
     width: 500px;
     text-align: center;
     font-weight: bold;
@@ -89,14 +93,46 @@ body {
 
 #buttons {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 16px;
+    /* border: 2px solid red; */
+    width: 100%;
 }
 
-button {
+#gameButtonContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    /* border: 2px solid blue; */
+    width: 100%;
+}
+
+button#rock,
+button#paper,
+button#scissors {
     padding: 10px;
     background-color: cornflowerblue;
     font-weight: bold;
     cursor: pointer;
-    border: 4px solid beige;
+    /* border: 4px solid beige; */
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* #startButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+button#startButton {
+    padding: 16px;
+    background-color: rgb(26, 231, 77);
+    font-weight: bold;
+    cursor: pointer;
+    /* border: 4px solid beige; */
+    border-radius: 8px;
+    width: 200px;
 }
