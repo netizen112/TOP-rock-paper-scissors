@@ -21,6 +21,7 @@ function playRound(playerSelection, computerSelection){
     let outcome;
 
     switch (playerSelection) {
+        //This sets the outcome to 'Win', 'Lose' or 'Tie'
         case 'rock':
             outcome = (computerSelection == 'Paper') ? 'Lose' : (computerSelection == 'Scissors') ? 'Win' : 'Tie';
             break;
@@ -35,8 +36,9 @@ function playRound(playerSelection, computerSelection){
             break;
     }
 
-    const disp = document.querySelector('#resultDisplay');
+    const disp = document.querySelector('#resultDisplay'); //Selects the element that will display the result string
     function displayResult(string) {
+        //Displays result string in the #resultDisplay div
         disp.textContent = string;
     }
 

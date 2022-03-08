@@ -16,10 +16,71 @@ body {
     min-height: 100vh;
 }
 
+#gameScreen {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#scoreDisplay {
+    display: flex;
+    width: 500px;
+    border: 2px solid red;
+    min-height: 160px;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+#playerScoreDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+    border: 2px solid pink;
+}
+
+#playerScoreLabel {
+    border: 2px solid blue;
+    text-align: center;
+    font-weight: bold;
+}
+
+#playerScoreCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid green;
+    height: 60%;
+    font-size: 80px;
+}
+
+#computerScoreDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+    border: 2px solid pink;
+}
+
+#computerScoreLabel {
+    border: 2px solid blue;
+    text-align: center;
+    font-weight: bold;
+}
+
+#computerScoreCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid green;
+    height: 60%;
+    font-size: 80px;
+}
+
 #resultDisplay {
     min-height: 32px;
     border: 4px dashed darkgoldenrod;
-    margin-bottom: 8px;
+    /*margin-bottom: 8px;*/
     background-color: azure;
     width: 500px;
     text-align: center;
