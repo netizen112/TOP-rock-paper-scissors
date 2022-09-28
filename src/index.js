@@ -1,60 +1,65 @@
 function getRandomInt3() {
-  return Math.floor(Math.random() * 3) + 1;
+    return Math.floor(Math.random() * 3) + 1;
 }
 
 function getComputerChoice() {
-  switch (getRandomInt3()) {
-    case 1:
-      return "Rock";
-    case 2:
-      return "Paper";
-    case 3:
-      return "Scissors";
-    default:
-      console.error("Error in getComputerChoice");
-      break;
-  }
+    switch (getRandomInt3()) {
+        case 1:
+            return "Rock";
+        case 2:
+            return "Paper";
+        case 3:
+            return "Scissors";
+        default:
+            console.error("Error in getComputerChoice");
+            break;
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelectionLower = playerSelection.toLowerCase();
-  let win = "";
+    playerSelectionLower = playerSelection.toLowerCase();
+    let win = "";
 
-  switch (playerSelectionLower) {
-    case "rock":
-      win =
-        computerSelection == "Rock"
-          ? "Tie"
-          : computerSelection == "Paper"
-          ? "Lose"
-          : "Win";
-      break;
+    switch (playerSelectionLower) {
+        case "rock":
+            win =
+                computerSelection == "Rock"
+                    ? "Tie"
+                    : computerSelection == "Paper"
+                    ? "Lose"
+                    : "Win";
+            break;
 
-    case "paper":
-      win =
-        computerSelection == "Paper"
-          ? "Tie"
-          : computerSelection == "Scissors"
-          ? "Lose"
-          : "Win";
-      break;
-    case "scissors":
-      win =
-        computerSelection == "Scissors"
-          ? "Tie"
-          : computerSelection == "Rock"
-          ? "Lose"
-          : "Win";
-      break;
-    default:
-      win = "error";
-      break;
-  }
+        case "paper":
+            win =
+                computerSelection == "Paper"
+                    ? "Tie"
+                    : computerSelection == "Scissors"
+                    ? "Lose"
+                    : "Win";
+            break;
+        case "scissors":
+            win =
+                computerSelection == "Scissors"
+                    ? "Tie"
+                    : computerSelection == "Rock"
+                    ? "Lose"
+                    : "Win";
+            break;
+        default:
+            win = "error";
+            break;
+    }
 
-  return win;
+    processResult(win);
 }
 
-function game() {
+function processResult(winStatus) {
+    let display = document.querySelector('.result');
+    display.textContent = winStatus;
+}
+
+/*function game() {
   let playerSelection = prompt("Type Rock, Paper, or Scissors");
   let playerScore = 0;
   let computerScore = 0;
@@ -111,4 +116,34 @@ function game() {
       "font-weight: 900; font-size: 24px; color: yellow"
     );
   }
+}*/
+
+// Logic to add event listeners to buttons
+
+function initializeGameButtons() {
+    const rockButton = document.querySelector(".button-rock");
+    rockButton.addEventListener(
+        "click",
+        () => {
+            playRound("Rock", getComputerChoice());
+        }
+    );
+
+    const paperButton = document.querySelector(".button-paper");
+    paperButton.addEventListener(
+        "click",
+        () => {
+            playRound("Paper", getComputerChoice());
+        }
+    );
+
+    const scissorsButton = document.querySelector(".button-scissors");
+    scissorsButton.addEventListener(
+        "click",
+        () => {
+            playRound("Scissors", getComputerChoice());
+        }
+    );
 }
+
+initializeGameButtons();
