@@ -9,13 +9,27 @@
     </head>
     <body>
         <div class="gameDisplay">
+            <div class="billboard">PRESS START!</div>
+            <div class="scoreboard">
+                <div class="playerScoreSection scoreSection">
+                    <div class="playerScoreLabel scoreLabel">Player</div>
+                    <div class="playerScore scoreNumber">0</div>
+                </div>
+                <div class="computerScoreSection scoreSection">
+                    <div class="computerScoreLabel scoreLabel">Computer</div>
+                    <div class="computerScore scoreNumber">0</div>
+                </div>
+            </div>
             <div class="result"></div>
-            <div class="buttons">
-                <button class="play-button button-rock">Rock</button>
-                <button class="play-button button-paper">Paper</button>
-                <button class="play-button button-scissors">Scissors</button>
+            <div class="play-button-container">
+                <button class="play-button button-rock">ROCK</button>
+                <button class="play-button button-paper">PAPER</button>
+                <button class="play-button button-scissors">SCISSORS</button>
+            </div>
+            <div class="start-button-container">
+                <button class="start-button">START</button>
             </div>
         </div>
-        <script src="./src/index.js"></script>
+        <script src="./src/script.js"></script>
     </body>
 </html>
